@@ -343,8 +343,8 @@ class embedded_filesystem {
     // Never-null:
     const cmrc::detail::index_type* _index;
     const detail::file_or_directory* _get(std::string_view path) const {
-        path = detail::normalize_path(path);
-        auto found = _index->find(path);
+        auto normalized = detail::normalize_path(path);
+        auto found = _index->find(normalized);
         if (found == _index->end()) {
             return nullptr;
         } else {
